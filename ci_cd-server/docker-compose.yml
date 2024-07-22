@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: C:/Users/Viko Mizrahi/Desktop/Computer Science Viko Mizrahi/Year C/Third year, 2nd semester/DevOps/ci_cd-server/ci_cd-server
+    ports:
+      - "8080:8080"
+    networks:
+      - cicd-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      retries: 3
+      start_period: 10s
+      timeout: 10s
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: cicd
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3308:3306"
+    networks:
+      - cicd-network
+
+  tests:
+    build:
+      context: C:/Users/Viko Mizrahi/PycharmProjects/pythonProject2/tests
+    depends_on:
+      - app
+    networks:
+      - cicd-network
+    environment:
+      BASE_URL: http://app:8080/api/jobs
+    command: [ "pytest", "test_jobs.py" ]
+
+networks:
+  cicd-network:
+
