@@ -27,11 +27,25 @@
             border-radius: 4px;
             overflow-x: auto;
         }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul li {
+            margin-bottom: 10px;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
     <h1>DevOps Project</h1>
-    <p>Welcome to the DevOps project. This project includes a Spring Boot API and associated tests. Follow the instructions below to set up and run the project.</p>
+    <p>Welcome to the DevOps project. This repository includes two projects: a Spring Boot API and associated Python tests. Follow the instructions below to set up and run both projects.</p>
 
     <h2>Repository Links</h2>
     <ul>
@@ -57,14 +71,14 @@
     <h3>3. Running the Tests</h3>
     <p>Navigate to the <code>tests</code> directory:</p>
     <pre><code>cd ../tests</code></pre>
-    <p>Build and run the tests using Docker Compose:</p>
+    <p>Ensure that the Docker Compose file for tests is correctly configured. Build and run the tests using Docker Compose:</p>
     <pre><code>docker-compose -f docker-compose.tests.yml up --build</code></pre>
-    <p>Note: Ensure that the <code>docker-compose.tests.yml</code> file is correctly configured for the test environment.</p>
 
     <h2>Additional Information</h2>
-    <p>If you encounter any issues, ensure that Docker is properly installed and running on your machine. Verify network configurations and dependencies.</p>
+    <p>If you encounter any issues, make sure Docker is properly installed and running. Verify network configurations and dependencies.</p>
 
     <h2>Contact</h2>
-    <p>For any questions or issues, please contact the project maintainer.</p>
+    <p>For questions or support, please contact the project maintainer.</p>
 </body>
 </html>
+
