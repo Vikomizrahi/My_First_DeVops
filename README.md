@@ -23,3 +23,7 @@ This project demonstrates a simple CI/CD pipeline using Docker, Python, and a Sp
 git clone https://github.com/Vikomizrahi/My_First_DeVops.git
 cd My_First_DeVops
 
+2. Build and run the Docker containers:
+
+```sh
+docker-compose up --build
