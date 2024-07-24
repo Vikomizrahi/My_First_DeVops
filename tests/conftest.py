@@ -1,9 +1,11 @@
 import pytest
 import requests
 
+
 @pytest.fixture(scope="module")
 def base_url():
-    return "http://localhost:8080/api/jobs"
+    return "http://app:8080/api/jobs"
+
 
 @pytest.fixture(scope="module")
 def create_job(base_url):

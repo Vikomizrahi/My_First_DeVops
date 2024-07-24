@@ -1,10 +1,12 @@
 import requests
 from utils import log_response
 
+
 def test_get_all_jobs(base_url):
     response = requests.get(base_url)
     log_response(response)
     assert response.status_code == 200
+
 
 def test_create_job(base_url):
     job_data = {
@@ -16,6 +18,7 @@ def test_create_job(base_url):
     log_response(response)
     assert response.status_code == 201
     assert response.json().get("jobName") == job_data["jobName"]
+
 
 def test_get_job_by_id(base_url, create_job):
     job_id = create_job["id"]
@@ -38,7 +41,6 @@ def test_update_job_status(base_url, create_job):
     log_response(response)
     assert response.status_code == 200
     assert response.json().get("status") == update_data["status"]
-
 
 
 def test_delete_job(base_url, create_job):

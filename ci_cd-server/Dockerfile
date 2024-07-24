@@ -1,5 +1,5 @@
-# Use OpenJDK 21 base image
-FROM openjdk:21-jdk-slim
+# Build Stage
+FROM openjdk:21-jdk-slim AS build
 
 # Install Maven
 RUN apt-get update && \
@@ -13,7 +13,6 @@ RUN apt-get update && \
 ENV MAVEN_HOME=/opt/maven
 ENV PATH=$MAVEN_HOME/bin:$PATH
 
-# Set working directory
 WORKDIR /home/app
 
 # Copy Maven files and build application
@@ -21,8 +20,8 @@ COPY pom.xml .
 COPY src ./src
 RUN mvn clean package -DskipTests
 
-# Copy built JAR to new image and set entry point
+# Run Stage
 FROM openjdk:21-jdk-slim
 WORKDIR /home/app
-COPY --from=0 /home/app/target/*.jar app.jar
+COPY --from=build /home/app/target/*.jar app.jar
 ENTRYPOINT ["java", "-jar", "app.jar"]

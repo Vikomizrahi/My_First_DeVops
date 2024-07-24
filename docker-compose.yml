@@ -3,7 +3,7 @@ version: '3.8'
 services:
   app:
     build:
-      context: C:/Users/Viko Mizrahi/Desktop/Computer Science Viko Mizrahi/Year C/Third year, 2nd semester/DevOps/ci_cd-server/ci_cd-server
+      context: ./ci_cd-server
     ports:
       - "8080:8080"
     networks:
@@ -29,7 +29,7 @@ services:
 
   tests:
     build:
-      context: C:/Users/Viko Mizrahi/PycharmProjects/pythonProject2/tests
+      context: ./tests
     depends_on:
       - app
     networks:
@@ -40,4 +40,3 @@ services:
 
 networks:
   cicd-network:
-
