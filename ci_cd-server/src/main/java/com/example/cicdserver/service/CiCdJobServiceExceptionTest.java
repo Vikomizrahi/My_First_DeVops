@@ -1,5 +1,9 @@
 package com.example.cicdserver.service;
 
+/*
+ * This test class was developed with the assistance of ChatGPT.
+ */
+
 import com.example.cicdserver.dto.CiCdJobDTO;
 import com.example.cicdserver.model.CiCdJob;
 import com.example.cicdserver.repository.CiCdJobRepository;

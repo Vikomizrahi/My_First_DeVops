@@ -10,7 +10,7 @@ public class CiCdJobDTO {
     private LocalDateTime updatedAt;
     private String jobType;
 
-    // Getters and Setters
+
     public Long getId() {
         return id;
     }

@@ -1,5 +1,10 @@
 package com.example.cicdserver.service;
 
+/*
+ * This service class was developed with the assistance of ChatGPT.
+ */
+
+
 import ch.qos.logback.classic.Logger;
 import com.example.cicdserver.dto.CiCdJobDTO;
 import com.example.cicdserver.model.CiCdJob;
