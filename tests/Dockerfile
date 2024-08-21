@@ -1,11 +1,15 @@
-FROM python:3.11
+# Use the official Python image from the Docker Hub
+FROM python:3.11-slim
 
+# Set the working directory inside the container
 WORKDIR /app
 
-COPY requirements.txt .
-RUN pip install -r requirements.txt
+# Copy requirements file and install dependencies
+COPY requirements.txt /app/
+RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
+# Copy the test files to the container
+COPY . /app
 
-# This will set pytest as the default command to run when the container starts
-CMD ["pytest"]
+# Command to run the tests
+CMD ["pytest", "--maxfail=1", "--disable-warnings", "-q"]

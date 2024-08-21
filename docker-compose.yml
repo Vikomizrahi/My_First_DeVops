@@ -1,42 +1,32 @@
 version: '3.8'
 
 services:
-  app:
+  cd-server:
     build:
       context: ./ci_cd-server
     ports:
-      - "8080:8080"
-    networks:
-      - cicd-network
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
-      interval: 30s
-      retries: 3
-      start_period: 10s
-      timeout: 10s
+      - "8081:8080"
+    depends_on:
+      - redis
+      - db
+
+  redis:
+    image: redis:latest
 
   db:
-    image: mysql:8.0
+    image: postgres:latest
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: cicd
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
-    ports:
-      - "3308:3306"
-    networks:
-      - cicd-network
+      POSTGRES_DB: ci_cd_db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
 
-  tests:
+  tester:
     build:
       context: ./tests
     depends_on:
-      - app
-    networks:
-      - cicd-network
-    environment:
-      BASE_URL: http://app:8080/api/jobs
-    command: [ "pytest", "test_jobs.py" ]
+      - cd-server
 
-networks:
-  cicd-network:
+volumes:
+  postgres-data:

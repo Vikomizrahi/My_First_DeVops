@@ -2,10 +2,13 @@ import requests
 from utils import log_response
 
 
+
+
 def test_get_all_jobs(base_url):
     response = requests.get(base_url)
     log_response(response)
     assert response.status_code == 200
+
 
 
 def test_create_job(base_url):

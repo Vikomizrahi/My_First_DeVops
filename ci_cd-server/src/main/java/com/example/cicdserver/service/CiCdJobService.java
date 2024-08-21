@@ -15,14 +15,21 @@ import java.util.stream.Collectors;
 @Service
 public class CiCdJobService {
 
-    private final CiCdJobRepository ciCdJobRepository;
-    private final BCryptPasswordEncoder passwordEncoder;
-    private Logger logger;
+    @Autowired
+    private CiCdJobRepository ciCdJobRepository;
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
+
+    private  Logger logger;
+
 
     @Autowired
     public CiCdJobService(CiCdJobRepository ciCdJobRepository, BCryptPasswordEncoder passwordEncoder) {
         this.ciCdJobRepository = ciCdJobRepository;
         this.passwordEncoder = passwordEncoder;
+
     }
 
     public CiCdJobDTO createJob(CiCdJobDTO jobDTO) {

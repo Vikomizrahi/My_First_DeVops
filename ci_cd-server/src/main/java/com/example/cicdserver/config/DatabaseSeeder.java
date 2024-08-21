@@ -27,7 +27,7 @@ public class DatabaseSeeder implements CommandLineRunner {
 
     @Override
     public void run(String... args)  {
-        // Seed initial CI/CD jobs with passwords
+
         CiCdJob job1 = new CiCdJob(null, "Job 1", "Pending", LocalDateTime.now(), LocalDateTime.now(), "Type A", bCryptPasswordEncoder.encode("password1"));
         CiCdJob job2 = new CiCdJob(null, "Job 2", "Running", LocalDateTime.now(), LocalDateTime.now(), "Type B", bCryptPasswordEncoder.encode("password2"));
         CiCdJob job3 = new CiCdJob(null, "Job 3", "Completed", LocalDateTime.now(), LocalDateTime.now(), "Type C", bCryptPasswordEncoder.encode("password3"));
