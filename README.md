@@ -29,15 +29,17 @@ This project demonstrates a simple CI/CD pipeline using Docker, Python, and a Sp
     - Start the MySQL database container.
     - Start the Spring Boot application container.
     - Run the tests in the Python container.
-
-## Running the Project
-To start the application, use the following command:
-```sh
-docker-compose up
-
+  
 ## API Documentation
 The API documentation is available through Swagger UI. Once the application is running, you can access the Swagger UI at the following URL:
 
 http://localhost:8080/swagger-ui.html
 
 Swagger UI provides a user-friendly interface to interact with the API, view available endpoints, and test the API methods.
+
+## Running the Project
+To start the application, use the following command:
+```sh
+docker-compose up
+
+
